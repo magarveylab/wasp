@@ -73,8 +73,8 @@ public class SessionManager implements Runnable {
 		}
 	}
 
-	public void addSession(String sessionID, Session config) {
-		sessionMap.put(sessionID, config);
+	public void addSession(String sessionID, Session session) {
+		sessionMap.put(sessionID, session);
 		logger.log(Level.INFO, "Session added, id = " + sessionID);
 	}
 	

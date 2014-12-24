@@ -13,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import ca.mcmaster.magarveylab.wasp.session.FileUploadListener;
+import ca.mcmaster.magarveylab.wasp.session.BasicSession;
 import ca.mcmaster.magarveylab.wasp.session.Session;
 import ca.mcmaster.magarveylab.wasp.session.SessionListener;
 import ca.mcmaster.magarveylab.wasp.session.SessionManager;
@@ -76,7 +77,7 @@ public abstract class WebApplicationSubmitParser {
 	 * @return			local filepath of the file
 	 * @throws Exception	if an error occurs writing a file
 	 */
-	public static String parseFileItem(FileItem item, Session session) throws Exception {
+	public static String parseFileItem(FileItem item, BasicSession session) throws Exception {
 		File localFile = new File(item.getName());
 		String webFileName = localFile.getName();
 

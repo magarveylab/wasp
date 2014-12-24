@@ -21,7 +21,7 @@ import ca.mcmaster.magarveylab.wasp.util.TimeUtil;
 public abstract class SessionSubmit extends HttpServlet {
 	
 	private static final long serialVersionUID = -5671961856226916741L;
-	private static SessionManager sessionManager;
+	protected static SessionManager sessionManager;
 	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -35,7 +35,7 @@ public abstract class SessionSubmit extends HttpServlet {
 		}
 	}
 
-	private void setHeartBeat(Session session) {
+	public static void setHeartBeat(Session session) {
 		String heartbeat = TimeUtil.getTimeTag();
 		session.setLastHeartBeat(heartbeat);
 	}
@@ -77,15 +77,14 @@ public abstract class SessionSubmit extends HttpServlet {
 	 * @param sessionID 
 	 * @param request
 	 */
-	private void registerSession(String sessionID, HttpServletRequest request) {
+	public void registerSession(String sessionID, HttpServletRequest request) {
 		// if an old session with the same id already exists, unregister it
 		Session old = sessionManager.getSession(sessionID);
 		if (old != null)
 			sessionManager.removeSession(sessionID);
 		
 		// create new session and set ID, root, exception handler & heartbeat
-		Session session = new Session();
-		session.setID(sessionID);
+		Session session = createNewSession(sessionID);
 		SessionListener listener = new SessionListener();
 		session.setListener(listener);
 		String root = request.getServletContext().getRealPath(File.separator);
@@ -98,6 +97,12 @@ public abstract class SessionSubmit extends HttpServlet {
 		
 		// register the session
 		sessionManager.addSession(sessionID, session);
+	}
+
+	public Session createNewSession(String sessionID) {
+		Session session = new BasicSession();
+		session.setID(sessionID);
+		return session;
 	}
 
 	/**

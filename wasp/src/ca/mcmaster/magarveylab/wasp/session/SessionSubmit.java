@@ -85,14 +85,19 @@ public abstract class SessionSubmit extends HttpServlet {
 		
 		// create new session and set ID, root, exception handler & heartbeat
 		Session session = createNewSession(sessionID);
+
 		SessionListener listener = new SessionListener();
 		session.setListener(listener);
+		
 		String root = request.getServletContext().getRealPath(File.separator);
 		session.setRoot(root);
+		
 		String dir = root + "tasks" + File.separator + sessionID + File.separator;
 		session.setDir(dir);
+		
 		ExceptionHandler exceptionHandler = new ExceptionHandler(listener);
 		session.setExceptionHandler(exceptionHandler);
+
 		setHeartBeat(session);
 		
 		// register the session

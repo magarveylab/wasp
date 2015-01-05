@@ -12,8 +12,8 @@ import ca.mcmaster.magarveylab.wasp.session.SessionListener;
  */
 public class ExceptionHandler {
 	
-	private SessionListener listener;
 	private final Logger logger = Logger.getLogger(ExceptionHandler.class.getName());
+	private SessionListener listener;
 	
 	/**
 	 * Instantiate a new exception handler for this session.

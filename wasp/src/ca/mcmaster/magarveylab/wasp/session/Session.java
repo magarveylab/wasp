@@ -91,4 +91,8 @@ public interface Session {
 
 	public void setWebapp(WebApplication webapp);
 
+	public String subDir(String dir);
+	
+	public String webDir();
+
 }

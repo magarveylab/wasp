@@ -1,5 +1,7 @@
 package ca.mcmaster.magarveylab.wasp.session;
 
+import java.io.File;
+
 import ca.mcmaster.magarveylab.wasp.WebApplication;
 import ca.mcmaster.magarveylab.wasp.exception.ExceptionHandler;
 import ca.mcmaster.magarveylab.wasp.report.Report;
@@ -137,4 +139,21 @@ public class BasicSession implements Session {
 		this.webapp = webapp;
 	}
 	
+	/**
+	 * Get the session directory as a relative web link.
+	 * @return	the session directory for HTML output
+	 */
+	public String webDir() {
+		return File.separator + context + File.separator + "tasks" + File.separator + sessionID + File.separator;
+	}
+	
+	/**
+	 * Get an immediate subdirectory of the root directory. 
+	 * @param subDir	the subdirectory to get
+	 * @return			the directory
+	 */
+	public String subDir(String subDir) {
+		return root + subDir + File.separator;
+	}
+
 }

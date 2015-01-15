@@ -1,6 +1,5 @@
 package ca.mcmaster.magarveylab.wasp.session;
 
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -34,6 +33,7 @@ public class SessionListener {
     
     public synchronized void addStage(String stage, String detail) {
     	stages.put(stage, detail);
+    	System.out.println(detail);
     }
     
     public synchronized void updateLastDetail(String detail) {

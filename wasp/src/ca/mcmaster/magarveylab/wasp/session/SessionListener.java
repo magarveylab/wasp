@@ -64,6 +64,8 @@ public class SessionListener {
     	String details = trace.toString();
     	// Output the exception message & stack trace	
     	addStage(exception, details);
+    	System.err.println("EXCEPTION: " + exception + "\n");
+    	e.printStackTrace();
     }
     
     public void attachReport(String report) {

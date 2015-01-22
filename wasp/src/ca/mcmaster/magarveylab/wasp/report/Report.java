@@ -19,4 +19,6 @@ public interface Report {
 
 	public boolean isTerminated();
 	
+	public boolean cancel();
+	
 }

@@ -43,6 +43,7 @@ public abstract class BasicReport extends TimerTask implements Report {
 			}
 
 			html = sb.toString();
+			write();
 		} catch (IOException e) {
 			ReportWriteException exception = new ReportWriteException("Error: could not write report", e);
 			session.exceptionHandler().throwException(exception);

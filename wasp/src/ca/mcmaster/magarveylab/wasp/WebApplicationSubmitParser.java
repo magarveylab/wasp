@@ -14,7 +14,6 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import ca.mcmaster.magarveylab.wasp.session.FileUploadListener;
 import ca.mcmaster.magarveylab.wasp.session.Session;
-import ca.mcmaster.magarveylab.wasp.session.SessionListener;
 import ca.mcmaster.magarveylab.wasp.session.SessionManager;
 
 /**

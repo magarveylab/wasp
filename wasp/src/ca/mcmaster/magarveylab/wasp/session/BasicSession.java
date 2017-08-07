@@ -148,7 +148,7 @@ public class BasicSession implements Session {
 	}
 	
 	/**
-	 * Get an immediate subdirectory of the root directory. 
+	 * Get an immediate subdirectory of the root directory. Includes trailing File.separator. 
 	 * @param subDir	the subdirectory to get
 	 * @return			the directory
 	 */

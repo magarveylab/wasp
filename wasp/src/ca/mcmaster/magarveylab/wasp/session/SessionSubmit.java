@@ -35,11 +35,6 @@ public abstract class SessionSubmit extends HttpServlet {
 		}
 	}
 
-	public static void setHeartBeat(Session session) {
-		String heartbeat = TimeUtil.getTimeTag();
-		session.setLastHeartBeat(heartbeat);
-	}
-	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String sessionID = request.getParameter("sessionID");
@@ -77,7 +72,7 @@ public abstract class SessionSubmit extends HttpServlet {
 	 * @param sessionID 
 	 * @param request
 	 */
-	public void registerSession(String sessionID, HttpServletRequest request) {
+	public static void registerSession(String sessionID, HttpServletRequest request) {
 		// if an old session with the same id already exists, unregister it
 		Session old = sessionManager.getSession(sessionID);
 		if (old != null)
@@ -103,8 +98,13 @@ public abstract class SessionSubmit extends HttpServlet {
 		// register the session
 		sessionManager.addSession(sessionID, session);
 	}
+	
+	public static void setHeartBeat(Session session) {
+		String heartbeat = TimeUtil.getTimeTag();
+		session.setLastHeartBeat(heartbeat);
+	}
 
-	public Session createNewSession(String sessionID) {
+	public static Session createNewSession(String sessionID) {
 		Session session = new BasicSession();
 		session.setID(sessionID);
 		return session;
